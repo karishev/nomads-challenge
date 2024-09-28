@@ -1,0 +1,198 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  overflow: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+ul {
+  list-style: none;
+}
+
+.drop {
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.qr {
+  position: absolute;
+  right: 4rem;
+  bottom: 4rem;
+  width: 12rem;
+  height: 12rem;
+  opacity: 0.7;
+  border-radius: 0.25rem;
+}
+
+.qr img {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.record {
+  position: absolute;
+  right: 4rem;
+  top: 4rem;
+  z-index: 1;
+  border-radius: 0.25rem;
+  background-color: rgb(255, 255, 255, 0.75);
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .record {
+    right: 1rem; /* Even smaller right margin for very small screens */
+    top: 1rem; /* Even smaller top margin for very small screens */
+    padding: 0.5rem; /* Even smaller padding for very small screens */
+    max-width: calc(100vw - 3rem); /* Adjust max width for smaller screens */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .qr {
+    display: none;
+  }
+}
+
+.country_info {
+  position: absolute;
+  left: 4rem;
+  top: 4rem;
+  z-index: 1;
+  background-color: rgb(255, 255, 255, 0.75);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .drop {
+    width: 100%;
+  }
+  .country_info {
+    display: none;
+    top: auto;
+    left: 1rem; /* Even smaller right margin for very small screens */
+    bottom: 1rem; /* Even smaller top margin for very small screens */
+    padding: 0.5rem; /* Even smaller padding for very small screens */
+    max-width: calc(100vw - 3rem); /* Adjust max width for smaller screens */
+    width: 100%;
+  }
+}
+
+button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+/* The container for the slider */
+.audioPlayer input[type="range"] {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 5px; /* Specified height */
+  background: #ddd; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.9; /* Set transparency (cross-browser) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  border-radius: 5px; /* Rounded corners */
+  position: relative;
+}
+
+/* Mouse-over effect */
+.audioPlayer input[type="range"]:hover {
+  opacity: 1; /* Fully opaque on hover */
+}
+
+/* The slider handle (thumb) */
+.audioPlayer input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 10px; /* Set a specific slider handle width */
+  height: 10px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 50%; /* Circular shape */
+}
+
+.audioPlayer input[type="range"]::-moz-range-thumb {
+  width: 10px; /* Set a specific slider handle width */
+  height: 10px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 50%; /* Circular shape */
+}
+
+/* The track (background) of the slider */
+.audioPlayer input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+.audioPlayer input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+/* Apply styles for IE/Edge */
+.audioPlayer input[type="range"]::-ms-track {
+  width: 100%;
+  height: 10px;
+  background: transparent; /* IE uses the track as the thumb */
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Styles for the thumb for IE/Edge */
+.audioPlayer input[type="range"]::-ms-thumb {
+  background: #4caf50;
+  border-radius: 50%;
+}
+
+/* Styles for IE/Edge to remove the default buttons on the left and right */
+.audioPlayer input[type="range"]::-ms-fill-lower {
+  background: #ddd;
+  border-radius: 5px;
+}
+
+.audioPlayer input[type="range"]::-ms-fill-upper {
+  background: #ddd;
+  border-radius: 5px;
+}
