@@ -29,18 +29,18 @@ export const Glob = () => {
         hexBinPointsData={equakes}
         hexBinPointLat={(d) => d.geometry.coordinates[1]}
         hexBinPointLng={(d) => d.geometry.coordinates[0]}
-        hexBinPointWeight={(d) => d.properties.mag}
+        hexBinPointWeight={(d) => d.properties.affected_population}
         hexBinResolution={2}
-        hexAltitude={({ sumWeight }) => sumWeight * 0.0025}
+        hexAltitude={({ sumWeight }) => sumWeight * 0.000000025}
         hexTopColor={(d) => weightColor(d.sumWeight)}
         hexSideColor={(d) => weightColor(d.sumWeight)}
         onHexClick={(d) => {
           setCountry(`
-        <b>${d.points.length}</b> earthquakes in the past month:<ul><li>
+        <b>${d.points.length}</b> disasters:<ul><li>
           ${d.points
             .slice()
-            .sort((a, b) => b.properties.mag - a.properties.mag)
-            .map((d) => d.properties.title)
+            .sort((a, b) => b.properties.affected_population - a.properties.affected_population)
+            .map((d) => d.properties.name)
             .join("</li><li>")}
         </li></ul>
       `);
