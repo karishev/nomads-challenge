@@ -21,26 +21,43 @@ const Navbar = () => {
       </div> */}
       {isOpen && ( // Only display menu if isOpen is true
         <ul className={styles.navList}>
-          <li className={`${styles.navItem} ${location.pathname === '/demo' ? styles.active : ''}`}>
-            <Link to="/demo" className={styles.navLink}>
+          <Link to="/demo" className={styles.navLink}>
+            <li
+              className={`${styles.navItem} ${
+                location.pathname === "/demo" ? styles.active : ""
+              }`}
+            >
               Demo
-            </Link>
-          </li>
-          <li className={`${styles.navItem} ${location.pathname === '/heatMap' ? styles.active : ''}`}>
-            <Link to="/heatMap" className={styles.navLink}>
+            </li>
+          </Link>
+
+          <Link to="/heatMap" className={styles.navLink}>
+            <li
+              className={`${styles.navItem} ${
+                location.pathname === "/heatMap" ? styles.active : ""
+              }`}
+            >
               HeatMap
-            </Link>
-          </li>
-          <li className={`${styles.navItem} ${location.pathname === '/caseStudy' ? styles.active : ''}`}>
-            <Link to="/caseStudy" className={styles.navLink}>
+            </li>
+          </Link>
+          <Link to="/caseStudy" className={styles.navLink}>
+            <li
+              className={`${styles.navItem} ${
+                location.pathname === "/caseStudy" ? styles.active : ""
+              }`}
+            >
               Case Study
-            </Link>
-          </li>
-          <li className={`${styles.navItem} ${location.pathname === '/solution' ? styles.active : ''}`}>
-            <Link to="/solution" className={styles.navLink}>
+            </li>
+          </Link>
+          <Link to="/solution" className={styles.navLink}>
+            <li
+              className={`${styles.navItem} ${
+                location.pathname === "/solution" ? styles.active : ""
+              }`}
+            >
               Solution
-            </Link>
-          </li>
+            </li>
+          </Link>
         </ul>
       )}
     </nav>

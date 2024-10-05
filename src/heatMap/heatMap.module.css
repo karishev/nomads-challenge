@@ -1,0 +1,84 @@
+/* Styling for the slider container */
+.sliderContainer {
+  position: absolute;
+  bottom: 100px;
+  width: 100vw;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Aligns min/max text on the sides */
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sliderBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Styling for the slider */
+.slider {
+  width: 30vw; /* Adjust width to leave space for min/max text */
+  cursor: pointer;
+  appearance: none;
+  background: transparent; /* Make the background transparent */
+  background-color: white;
+  border-radius: 1rem;
+  height: 0.5rem;
+}
+
+/* Styling for the min and max year labels */
+.sliderLabel {
+  color: white;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+.sliderLabel:hover {
+  cursor: pointer;
+}
+
+/* Styling for the slider value indicator */
+.indicator {
+  position: absolute;
+  top: 30px; /* Position the indicator above the slider */
+  transform: translateX(-50%); /* Center the indicator above the thumb */
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  pointer-events: none; /* Prevent interaction with the indicator */
+}
+
+.infoContainer {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  width: 400px;
+  /* height: 30vh; */
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.infoContainer h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.infoContainer p {
+  font-size: 16px;
+  font-weight: 100;
+}

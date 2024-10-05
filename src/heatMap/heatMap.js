@@ -1,50 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Globe from "react-globe.gl";
 import * as d3 from "d3";
-import countryData from "./heatMapData"; // Import the updated country data
+// import countryData from "./heatMapData.js"; // Import the updated country data
+import styles from "./heatMap.module.css"; // Import the CSS module
+import precomputedData from "./precomputedData.json";
 
 export const HeatMap = () => {
+  // const [precomputedData, setPrecomputedData] = useState({});
   const [countries, setCountries] = useState([]);
   const [year, setYear] = useState(2000); // Initial year (e.g., 2000)
-  const [sliderPosition, setSliderPosition] = useState(0); // To track the slider thumb position
+  const [sliderPosition, setSliderPosition] = useState(18.5); // To track the slider thumb position
   const minYear = 1995;
   const maxYear = 2022;
 
-  // Load and filter data based on the selected year
-  const [worldData, setWorldData] = useState(null);
-
   useEffect(() => {
-    // Fetch world data only once
-    if (!worldData) {
-      fetch(
-        "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setWorldData(data);
-        });
-    }
-  }, [worldData]);
-
-  useEffect(() => {
-    if (worldData) {
-      const filteredData = countryData.filter((c) => c.year === year);
-      setCountries(
-        worldData.features.map((d) => {
-          const countryValue =
-            filteredData.find((c) => c.country === d.properties.name)?.value ||
-            0;
-          return {
-            ...d,
-            properties: {
-              ...d.properties,
-              value: countryValue,
-            },
-          };
-        })
-      );
-    }
-  }, [year, worldData]);
+    setCountries(precomputedData[year] || []);
+  }, [year]);
 
   // Adjusted color scale to emphasize the range from green to red
   const colorScale = d3
@@ -77,77 +48,66 @@ export const HeatMap = () => {
         onPolygonClick={(d) => console.log(d)}
       />
 
-      {/* Slider to select year */}
-      <div style={sliderContainerStyle}>
-        {/* Slider value indicator */}
-        <div
-          style={{
-            ...indicatorStyle,
-            left: `calc(5.145 * ${sliderPosition}px + 0.051 * ${window.innerWidth}px)`,
-          }}
-        >
-          {year}
-        </div>
+      <div className={styles.infoContainer}>
+        <h2>Gender Inequality Index (GII) Heat Map</h2>
+        <p>
+          This heat map illustrates the levels of gender inequality across
+          different countries over time. The GII measures disparities between
+          men and women in key dimensions, including reproductive health,
+          empowerment, and labor market participation. Darker colors indicate
+          higher inequality, where women face greater disadvantages in these
+          areas. Use this map to explore how gender inequality changes
+          geographically and over the years, highlighting regions that require
+          targeted interventions to achieve gender equity
+        </p>
+      </div>
 
-        {/* Text for min year */}
-        <span style={sliderLabelStyle}>{minYear}</span>
-        <input
-          type="range"
-          min={minYear}
-          max={maxYear}
-          step="1"
-          value={year}
-          onChange={handleSliderChange}
-          style={sliderStyle}
-        />
-        {/* Text for max year */}
-        <span style={sliderLabelStyle}>{maxYear}</span>
+      {/* Slider to select year */}
+      <div className={styles.sliderContainer}>
+        <div className={styles.sliderBox}>
+          {/* Slider value indicator */}
+          <div
+            className={styles.indicator}
+            style={{
+              left: `calc(0.29vw * ${sliderPosition} + 35vw + 1rem)`,
+            }}
+          >
+            {year}
+          </div>
+
+          {/* Text for min year */}
+          <span
+            className={styles.sliderLabel}
+            onClick={() => {
+              setYear(minYear);
+              setSliderPosition(0);
+            }}
+          >
+            {minYear}
+          </span>
+          <input
+            type="range"
+            min={minYear}
+            max={maxYear}
+            step="1"
+            value={year}
+            onChange={handleSliderChange}
+            className={styles.slider}
+          />
+          {/* Text for max year */}
+          <span
+            className={styles.sliderLabel}
+            onClick={() => {
+              setYear(maxYear);
+              setSliderPosition(100);
+            }}
+          >
+            {maxYear}
+          </span>
+        </div>
       </div>
     </>
   );
-};
-
-// Styling for the slider container
-const sliderContainerStyle = {
-  position: "absolute",
-  bottom: "100px",
-  width: "50vh",
-  left: "25vh",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between", // Aligns min/max text on the sides
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
-  padding: "10px",
-  borderRadius: "10px",
-};
-
-// Styling for the slider
-const sliderStyle = {
-  width: "70%", // Adjust width to leave space for min/max text
-  cursor: "pointer",
-  appearance: "none",
-  background: "transparent", // Make the background transparent
-};
-
-// Styling for the min and max year labels
-const sliderLabelStyle = {
-  color: "white",
-  fontSize: "16px",
-  padding: "0 10px",
-};
-
-// Styling for the slider value indicator
-const indicatorStyle = {
-  position: "absolute",
-  top: "-30px", // Position the indicator above the slider
-  transform: "translateX(-50%)", // Center the indicator above the thumb
-  backgroundColor: "#fff",
-  padding: "5px 10px",
-  borderRadius: "5px",
-  color: "#000",
-  fontSize: "14px",
-  fontWeight: "bold",
-  pointerEvents: "none", // Prevent interaction with the indicator
 };
 
 export default HeatMap;

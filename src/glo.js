@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Globe from "react-globe.gl";
 import * as d3 from "d3";
-import data from "./custom";
-import { Info } from "./countryInfo";
+import data from "./custom.js";
+import { Info } from "./countryInfo.js";
 
 export const Glob = () => {
   const [equakes, setEquakes] = useState([]);

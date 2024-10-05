@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Usse Routes and Route instead of Switch
-import Navbar from "./navbar/navbar"; // Import the Navbar component
-import Demo from "./demo"; // Import all your pages
-import { HeatMap } from "./heatMap/heatMap";
-import CaseStudy from "./caseStudy";
-import Solution from "./solution";
-import { Landing } from "./landing/landing";
+import Navbar from "./navbar/navbar.js"; // Import the Navbar component
+import Demo from "./demo.js"; // Import all your pages
+import { HeatMap } from "./heatMap/heatMap.js";
+import CaseStudy from "./caseStudy.js";
+import Solution from "./solution.js";
+import { Landing } from "./landing/landing.js";
 
 function App() {
   return (

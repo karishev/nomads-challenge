@@ -1,5 +1,5 @@
 import React from "react";
-import { Glob } from "./glo"; // Import your globe component
+import { Glob } from "./glo.js"; // Import your globe component
 
 const Solution = () => {
   return (
