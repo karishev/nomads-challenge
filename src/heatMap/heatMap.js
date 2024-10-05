@@ -69,7 +69,7 @@ export const HeatMap = () => {
           <div
             className={styles.indicator}
             style={{
-              left: `calc(0.29vw * ${sliderPosition} + 35vw + 1rem)`,
+              left: `calc(0.29vw * ${sliderPosition} + 35vw + 0.5rem)`,
             }}
           >
             {year}
