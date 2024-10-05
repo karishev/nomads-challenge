@@ -1,0 +1,82 @@
+/* Wrapping container for the hamburger to keep its position stable */
+.hamburgerContainer {
+  height: 30px; /* Ensure fixed height */
+  display: flex;
+  /* align-items: center; */
+  justify-content: flex-end;
+}
+
+.hamburger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  box-sizing: border-box; /* Ensures no overflow or size changes */
+  padding: 0;
+  margin: 0;
+}
+
+.line {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  margin: 2px 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+.navList {
+  list-style-type: none;
+  padding: 10px;
+  /* background-color: #333; */
+  border-radius: 10px; /* More rounded corners */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navItem {
+  background-color: #333;
+  border: 1px solid white;
+  width: 15rem;
+  padding: 1rem 0.5rem; /* Increase padding for more spacing */
+  text-transform: uppercase; /* Make text uppercase for better emphasis */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navItem:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.navItem:hover .navLink {
+  color: black;
+}
+
+.navLink {
+  color: white; /* Make text white */
+  text-decoration: none; /* Remove underline */
+  font-size: 18px; /* Increase font size */
+  font-weight: bold; /* Make the text bold */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.active {
+  background-color: white;
+  color: black;
+}
+
+.active .navLink {
+  color: black;
+}
