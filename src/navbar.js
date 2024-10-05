@@ -47,11 +47,11 @@ const Navbar = () => {
 
 // Wrapping container for the hamburger to keep its position stable
 const hamburgerContainerStyle = {
-	width: "40px", // Ensure fixed width
-	height: "30px", // Ensure fixed height
+	width: "100%", // Ensure fixed width
+	height: "30px", // Ensure fdixed height
 	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
+	// alignItems: "center",
+	justifyContent: "flex-end",
 };
 
 const hamburgerStyle = {
