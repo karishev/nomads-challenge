@@ -53,13 +53,13 @@ export const HeatMap = () => {
 			<Globe
 				globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
 				polygonsData={countries}
-				polygonAltitude={(d) => (d.properties.value ? 0.05 : 0.01)}
+				polygonAltitude={(d) => (0.01)}
 				polygonCapColor={(d) => colorScale(d.properties.value)}
 				polygonSideColor={() => "rgba(0, 100, 0, 0.15)"}
 				polygonStrokeColor={() => "#111"}
-				polygonsTransitionDuration={300}
+				polygonsTransitionDuration={0}
 				onPolygonClick={(d) =>
-					alert(`${d.properties.name}: ${d.properties.value}`)
+					alert(`${d.properties.name}: ${d.propertifes.value}`)
 				}
 			/>
 
@@ -97,15 +97,14 @@ export const HeatMap = () => {
 const sliderContainerStyle = {
 	position: "absolute",
 	bottom: "100px",
-	width: "30%",
-	left: "45%",
+	width: "50vh",
+	left: "25vh",
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "space-between", // Aligns min/max text on the sides
 	backgroundColor: "rgba(0, 0, 0, 0.5)",
 	padding: "10px",
 	borderRadius: "10px",
-	position: "relative", // To position the indicator within this container
 };
 
 // Styling for the slider
