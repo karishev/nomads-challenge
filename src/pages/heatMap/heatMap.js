@@ -17,18 +17,16 @@ export const HeatMap = () => {
 		setCountries(precomputedData[year] || []);
 	}, [year]);
 
-	// Adjusted color scale to emphasize the range from green to red
 	const colorScale = d3
-		.scaleLinear() // Use a linear scale for smoother transitions
-		.domain([0.5, 10, 20]) // Set key points for color mapping
-		.range(["green", "yellow", "red"]); // Map 0 -> green, 10 -> yellow, 20 -> red
+		.scaleLinear() 
+		.domain([0.5, 10, 20])
+		.range(["green", "yellow", "red"]); 
 
-	// Function to handle slider change and position update
 	const handleSliderChange = (e) => {
 		const value = Number(e.target.value);
 		setYear(value);
 		const percent = ((value - minYear) / (maxYear - minYear)) * 100;
-		setSliderPosition(percent); // Update position of the indicator
+		setSliderPosition(percent); 
 	};
 
 	return (

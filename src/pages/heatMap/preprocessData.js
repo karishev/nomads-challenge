@@ -1,7 +1,6 @@
-
 import fs from "fs";
 import fetch from "node-fetch";
-import countryData from "./heatMapData.js"; // Adjust path as necessary
+import countryData from "./climateHeatMapData.js"; // Adjust path as necessary
 
 const minYear = 1995;
 const maxYear = 2022;

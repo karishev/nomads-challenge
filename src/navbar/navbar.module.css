@@ -1,57 +1,62 @@
 /* Wrapping container for the hamburger to keep its position stable */
-.hamburgerContainer {
-  height: 30px; /* Ensure fixed height */
-  display: flex;
-  /* align-items: center; */
-  justify-content: flex-end;
-}
 
-.hamburger {
+/* .hamburgerContainer {
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+} */
+
+
+/* .hamburger {
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
   height: 20px;
-  box-sizing: border-box; /* Ensures no overflow or size changes */
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
+} */
 
-.line {
+
+/* .line {
   height: 3px;
   width: 100%;
   background-color: white;
   margin: 2px 0;
   box-sizing: border-box;
-}
+} */
 
 .navbar {
+  width: 100%;
+  padding: 0 40px;
   position: fixed;
-  top: 10px;
-  right: 20px;
-  z-index: 10; /* Ensure it's above other elements */
+  /* top: 10px;
+  right: 20px; */
+  z-index: 10;
 }
 
 .navList {
-  list-style-type: none;
   padding: 10px;
-  /* background-color: #333; */
-  border-radius: 10px; /* More rounded corners */
+  border-radius: 10px;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  gap: 1rem;
+  list-style-type: none;
+  /* gap: 1rem; */
+  /* background-color: #333; */
+  /* flex-direction: column; */
 }
 
 .navItem {
-  background-color: #333;
+  background-color: #201d4a;
   border: 1px solid white;
-  width: 15rem;
-  padding: 1rem 0.5rem; /* Increase padding for more spacing */
-  text-transform: uppercase; /* Make text uppercase for better emphasis */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  width: 200px;
+  padding: 1rem 0.5rem; 
+  text-transform: uppercase;
+  transition: background-color 0.3s ease; 
 }
 
 .navItem:hover {

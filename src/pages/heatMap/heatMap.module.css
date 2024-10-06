@@ -56,11 +56,11 @@
 }
 
 .infoContainer {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  width: 400px;
   /* height: 30vh; */
+  width: 400px;
+  position: absolute;
+  top: 120px;
+  left: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   padding: 20px;
@@ -70,6 +70,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  z-index: 15;
 }
 
 .infoContainer h2 {
