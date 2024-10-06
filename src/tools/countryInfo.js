@@ -1,15 +1,18 @@
-
 import styles from "./info.module.css";
 
-export const Info = ({ country_name }) => {
+export const Info = ({ data }) => {
   // console.log(props);
 
   return (
     <div className="country_info">
-      <div dangerouslySetInnerHTML={{ __html: country_name }} />
+      <div>{data.name}</div>
       <div>
-        <h4>Recordings</h4>
-        <ul className={styles.recordings}></ul>
+        <ul className={styles.recordings}>
+          <li>Affected Areas: {data.affected_areas.join(", ")}</li>
+          <li>Death Toll: {data.death_toll}</li>
+          <li>Missing: {data.missing}</li>
+          <li>Affected Population: {data.affected_population}</li>
+        </ul>
       </div>
     </div>
   );
