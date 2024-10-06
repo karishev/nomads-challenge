@@ -93,3 +93,28 @@
 	font-size: 14px;
 	pointer-events: none; /* This ensures the tooltip does not interfere with mouse events */
 }
+
+.dataSelection {
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+}
+
+.dataSelection button {
+	background-color: #333;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	margin: 0 5px;
+	transition: background-color 0.3s;
+}
+
+.dataSelection button:hover {
+	background-color: #555;
+}
+
+.dataSelection .active {
+	background-color: #007bff;
+}
+
