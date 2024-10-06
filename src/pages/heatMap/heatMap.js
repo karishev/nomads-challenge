@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Globe from "react-globe.gl";
 import * as d3 from "d3";
 // import countryData from "./heatMapData.js"; // Import the updated country data
@@ -13,25 +13,48 @@ export const HeatMap = () => {
 	const minYear = 1995;
 	const maxYear = 2022;
 
+	const globeEl = useRef();
+	const rotationSpeed = 0.1; // Smaller is slower
+	let rotationAngle = 0; // Initial angle
+
 	useEffect(() => {
 		setCountries(precomputedData[year] || []);
 	}, [year]);
 
+	useEffect(() => {
+		const rotateGlobe = () => {
+			if (globeEl.current) {
+				rotationAngle += rotationSpeed;
+				globeEl.current.pointOfView({
+					lat: globeEl.current.pointOfView().lat,
+					lng:
+						(globeEl.current.pointOfView().lng + rotationSpeed) %
+						360,
+				});
+			}
+		};
+
+		const interval = setInterval(rotateGlobe, 50); // Rotate the globe every 50ms
+
+		return () => clearInterval(interval); // Cleanup the interval on component unmount
+	}, []);
+
 	const colorScale = d3
-		.scaleLinear() 
+		.scaleLinear()
 		.domain([0.5, 10, 20])
-		.range(["green", "yellow", "red"]); 
+		.range(["green", "yellow", "red"]);
 
 	const handleSliderChange = (e) => {
 		const value = Number(e.target.value);
 		setYear(value);
 		const percent = ((value - minYear) / (maxYear - minYear)) * 100;
-		setSliderPosition(percent); 
+		setSliderPosition(percent);
 	};
 
 	return (
 		<>
 			<Globe
+				ref={globeEl}
 				globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
 				polygonsData={countries}
 				polygonAltitude={(d) => 0.01 + 0.001 * d.properties.value} // Slight altitude based on value for visual effect
