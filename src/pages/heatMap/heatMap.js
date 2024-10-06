@@ -1,21 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
 import Globe from "react-globe.gl";
 import * as d3 from "d3";
-// import countryData from "./heatMapData.js"; // Import the updated country data
-import styles from "./heatMap.module.css"; // Import the CSS module
+import styles from "./heatMap.module.css";
 import precomputedData from "./precomputedData.json";
 
 export const HeatMap = () => {
-	// const [precomputedData, setPrecomputedData] = useState({});
 	const [countries, setCountries] = useState([]);
 	const [year, setYear] = useState(1995);
-	const [sliderPosition, setSliderPosition] = useState(18.5); // To track the slider thumb position
+	const [hoveredCountry, setHoveredCountry] = useState(null); // To track hovered country
+	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); // To track mouse position
+	const [sliderPosition, setSliderPosition] = useState(18.5);
 	const minYear = 1995;
 	const maxYear = 2022;
 
 	const globeEl = useRef();
-	const rotationSpeed = 0.1; // Smaller is slower
-	let rotationAngle = 0; // Initial angle
+	const rotationSpeed = 0.1;
+	let rotationAngle = 0;
 
 	useEffect(() => {
 		setCountries(precomputedData[year] || []);
@@ -34,9 +34,21 @@ export const HeatMap = () => {
 			}
 		};
 
-		const interval = setInterval(rotateGlobe, 50); // Rotate the globe every 50ms
+		const interval = setInterval(rotateGlobe, 50);
 
-		return () => clearInterval(interval); // Cleanup the interval on component unmount
+		return () => clearInterval(interval);
+	}, []);
+
+	// Track mouse movement for tooltip positioning
+	const handleMouseMove = (event) => {
+		setMousePosition({ x: event.clientX, y: event.clientY });
+	};
+
+	useEffect(() => {
+		window.addEventListener("mousemove", handleMouseMove);
+		return () => {
+			window.removeEventListener("mousemove", handleMouseMove);
+		};
 	}, []);
 
 	const colorScale = d3
@@ -57,7 +69,7 @@ export const HeatMap = () => {
 				ref={globeEl}
 				globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
 				polygonsData={countries}
-				polygonAltitude={(d) => 0.01 + 0.001 * d.properties.value} // Slight altitude based on value for visual effect
+				polygonAltitude={(d) => 0.01 + 0.001 * d.properties.value}
 				polygonCapColor={(d) =>
 					d.properties.value === 0
 						? "rgba(50, 50, 50, 1)"
@@ -65,9 +77,28 @@ export const HeatMap = () => {
 				}
 				polygonSideColor={() => "rgba(0, 100, 0, 0.15)"}
 				polygonStrokeColor={() => "#111"}
-				polygonsTransitionDuration={0} // Transition effect when changing year
+				polygonsTransitionDuration={0}
+				onPolygonHover={(d) => {
+					setHoveredCountry(d ? d.properties : null);
+				}}
 				onPolygonClick={(d) => console.log(d)}
 			/>
+
+			{/* Tooltip for hovered country */}
+			{hoveredCountry && (
+				<div
+					className={styles.tooltip}
+					style={{
+						left: mousePosition.x + 10 + "px", // Position near the cursor
+						top: mousePosition.y + 10 + "px", // Position near the cursor
+					}}
+				>
+					<strong>{hoveredCountry.name}</strong>
+					<br />
+					Index Score: {hoveredCountry.value.toFixed(2)}{" "}
+					{/* Rounded to 2 decimal places */}
+				</div>
+			)}
 
 			<div className={styles.infoContainer}>
 				<h2>Gender Inequality Index (GII) Heat Map</h2>
