@@ -3,6 +3,7 @@ import Globe from "react-globe.gl";
 import * as d3 from "d3";
 import data from "./custom.js";
 import { Info } from "./countryInfo.js";
+import styles from "./info.module.css";
 
 export const Glob = () => {
   const [equakes, setEquakes] = useState([]);
@@ -14,7 +15,6 @@ export const Glob = () => {
 
   // Variables to control rotation speed
   const rotationSpeed = 0.1; // Smaller is slower
-  const maxAltitude = 2.2; // Maximum altitude for zooming out
 
   useEffect(() => {
     // load data
@@ -35,12 +35,12 @@ export const Glob = () => {
         const currentView = globeEl.current.pointOfView();
 
         // Ensure altitude is within limits (don't zoom out too far)
-        const newAltitude = Math.min(currentView.altitude, maxAltitude);
+        // const newAltitude = Math.min(currentView.altitude, maxAltitude);
 
         globeEl.current.pointOfView({
           lat: currentView.lat, // Keep the same latitude
           lng: (currentView.lng + rotationSpeed) % 360, // Slowly rotate the longitude
-          altitude: newAltitude,
+          // altitude: newAltitude,
         });
       }
     };
@@ -79,8 +79,8 @@ export const Glob = () => {
   // Zoom limits
   const handleZoom = ({ altitude }) => {
     // console.log(altitude);
-    const minAltitude = 1.25; // Minimum zoom level
-    const maxAltitude = 10; // Maximum zoom level
+    const minAltitude = 1.5; // Minimum zoom level
+    const maxAltitude = 3; // Maximum zoom level
     const newAltitude = Math.max(minAltitude, Math.min(maxAltitude, altitude)); // Clamp altitude
     if (globeEl.current) {
       globeEl.current.pointOfView({ altitude: newAltitude });
@@ -88,28 +88,43 @@ export const Glob = () => {
   };
 
   return (
-    <>
-      {country !== "" ? <Info data={country} /> : ""}
-      <Globe
-        ref={globeEl}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-day.jpg"
-        htmlElementsData={equakes}
-        htmlElement={(d) => {
-          const el = document.createElement("div");
-          el.innerHTML = markerSvg;
-          el.style.color = d === selectedMarker ? "red" : d.color;
-          el.style.width =
-            d === selectedMarker ? `${d.size * 1.5}px` : `${d.size}px`;
+    <div className={styles.container}>
+      {country !== "" ? (
+        <Info
+          data={country}
+          setClose={() => {
+            if (globeEl.current) {
+              globeEl.current.controls().enabled = true;
+            }
+            setSelectedMarker(null);
+            setCountry("");
+          }}
+        />
+      ) : (
+        ""
+      )}
+      <div className={`${styles.globe} ${selectedMarker ? styles.move : ""}`}>
+        <Globe
+          ref={globeEl}
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-day.jpg"
+          htmlElementsData={equakes}
+          htmlElement={(d) => {
+            const el = document.createElement("div");
+            el.innerHTML = markerSvg;
+            el.style.color = d === selectedMarker ? "red" : d.color;
+            el.style.width =
+              d === selectedMarker ? `${d.size * 1.5}px` : `${d.size}px`;
 
-          el.style["pointer-events"] = "auto";
-          el.style.cursor = "pointer";
-          el.onclick = () => handleMarkerClick(d);
+            el.style["pointer-events"] = "auto";
+            el.style.cursor = "pointer";
+            el.onclick = () => handleMarkerClick(d);
 
-          return el;
-        }}
-        onZoom={handleZoom} // Limit zooming
-        enablePointerInteraction={!selectedMarker}
-      />
-    </>
+            return el;
+          }}
+          onZoom={handleZoom} // Limit zooming
+          enablePointerInteraction={!selectedMarker}
+        />
+      </div>
+    </div>
   );
 };

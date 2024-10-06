@@ -3,7 +3,7 @@ import './demo.css';
 
 const Demo = () => {
 	return (
-		<div style={{width: "100%", height: "100vh", backgroundColor: "#12293E"}}>
+		<div style={{width: "100%", height: "100vh", paddingTop: "80px", backgroundColor: "#12293E"}}>
 			<div className="videoContainer">
 				<video controls width="70%" style={{padding: "30px 50px"}}>
 					<source src="/assets/video.mp4" type="video/mp4" />

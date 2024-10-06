@@ -12,12 +12,15 @@ export const Landing = () => {
             Change
           </p>
         </div>
-        <ul className="menu">
+        <a href="/demo">
+          <button className="menu-button">Get Started</button>
+        </a>
+        {/* <ul className="menu">
           <li>
             <a href="/demo">Demo</a>
           </li>
           <li>
-            <a href="/heatMap">Global</a>
+            <a href="/heat/climate">Global</a>
           </li>
           <li>
             <a href="/caseStudy">Local</a>
@@ -25,7 +28,7 @@ export const Landing = () => {
           <li>
             <a href="/solution">Model</a>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </div>
   );

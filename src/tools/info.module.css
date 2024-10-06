@@ -1,3 +1,38 @@
+.country_info {
+  position: absolute;
+  left: 40px;
+  top: 6rem;
+  z-index: 1;
+  background-color: rgb(255, 255, 255, 0.75);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 30rem;
+  max-height: 60vh;
+  width: 20rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  overflow-y: auto;
+}
+
+.country_info h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding-right: 2rem;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .recordings {
   display: flex;
   flex-direction: column;
@@ -12,4 +47,27 @@
   /* justify-content: center; */
   /* gap: 1rem; */
   align-items: center;
+}
+
+.globe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: left 0.5s ease-in-out;
+}
+
+.move {
+  left: 20rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: rgb(0, 0, 18);
+  width: 100vw;
+  height: 100vh;
 }
