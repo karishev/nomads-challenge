@@ -4,10 +4,13 @@ const Game = () => {
 	return (
 		<div
 			style={{
-				width: "100%",
-				display: "block",
-				marginLeft: "auto",
-				marginRight: "auto",
+				width: "100vw",
+				height: "100vh",
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				position: "relative",
+				overflow: "hidden", // Hides any overflow content
 			}}
 		>
 			<iframe
@@ -15,23 +18,15 @@ const Game = () => {
 				title="Solution"
 				style={{
 					position: "absolute",
-					width: "80%",
-					height: "100%",
+					width: "100%",
+					height: "110%", // Adjust this to crop out the navigation at the bottom
 					top: "0",
 					left: "0",
 					border: "none",
-					padding: "0",
-					margin: "0",
 				}}
 				src="https://www.canva.com/design/DAGSwebHLcU/I5u6ehrhwwuwAPyK6ce5Dg/view?embed"
-				allowfullscreen="allowfullscreen"
-				allow="fullscreen"
+				allowFullScreen
 			></iframe>
-			<a
-				href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGSs8yVlu8&#x2F;6uJAsFnW1_BHk286W6CHzg&#x2F;view?utm_content=DAGSs8yVlu8&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
-				target="_blank"
-				rel="noopener"
-			></a>
 		</div>
 	);
 };
