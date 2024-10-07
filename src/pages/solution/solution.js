@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import Globe from "react-globe.gl";
-import data from "./custom.js";
+import data from "./data.js";
 import { Info } from "./countryInfo.js";
 import styles from "./info.module.css";
 
-export const Solution = () => {
+export const CaseStudy = () => {
 	const [equakes, setEquakes] = useState([]);
 	const [country, setCountry] = useState("");
 	const [selectedMarker, setSelectedMarker] = useState(null);
@@ -135,4 +135,4 @@ export const Solution = () => {
 	);
 };
 
-export default Solution;
+export default CaseStudy;
