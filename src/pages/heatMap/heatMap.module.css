@@ -113,7 +113,7 @@
   justify-content: center;
   height: 30rem;
   overflow: hidden;
-  /* overflow-y: auto; */
+  overflow-y: auto;
 }
 
 .yearList {
@@ -121,6 +121,7 @@
   display: flex;
   flex-direction: column;
   align-items: end;
+  list-style: none;
 
   gap: 2rem;
 }

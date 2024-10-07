@@ -13,11 +13,13 @@ export const HeatMap = () => {
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 	const [sliderPosition, setSliderPosition] = useState(18.5);
 	const [selectedData, setSelectedData] = useState("GCI"); // Default data selection
+	
 
 	const minYear = 1995;
 	const maxYear = 2022;
 
 	const globeEl = useRef();
+	const sliderRef = useRef(null);
 	const rotationSpeed = 0.1;
 
 	// Update countries data based on selected year and dataset
@@ -103,6 +105,20 @@ export const HeatMap = () => {
 		},
 	};
 
+	useEffect(() => {
+		if (sliderRef.current) {
+		  const activeYearElement = sliderRef.current.querySelector(`.${styles.activeYear}`);
+		  if (activeYearElement) {
+			const offsetTop = activeYearElement.offsetTop;
+			const sliderHeight = sliderRef.current.clientHeight;
+			sliderRef.current.scrollTo({
+			  top: offsetTop - sliderHeight / 2 + activeYearElement.clientHeight / 2,
+			  behavior: 'smooth',
+			});
+		  }
+		}
+	  }, [year]);
+
 	return (
 		<>
 			{/* Data Selection Options */}
@@ -174,12 +190,12 @@ export const HeatMap = () => {
 
 			{/* Slider to select year */}
 			<div className={styles.rightSlider}>
-				<div className={styles.yearSlider}>
+				<div className={styles.yearSlider} ref={sliderRef}>
 					<ul
 						className={styles.yearList}
 						style={{
-							transform: `translateY(${-(year - minYear) * 80}px)`,
-							transition: "transform 0.3s ease-out",
+							// transform: `translateY(${-(year - minYear) * 80}px)`,
+							// transition: "transform 0.3s ease-out",
 						}}
 					>
 						{[...Array(maxYear - minYear + 1)].map((_, index) => (
