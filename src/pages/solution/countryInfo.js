@@ -29,7 +29,7 @@ export const Info = ({ data, setClose }) => {
 							</li>
 						</ul>
 					</div>
-					<button class="explore-button">Explore more</button>
+					<button className="explore-button">Explore more</button>
 				</div>
 			</div>
 		</>
