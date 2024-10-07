@@ -10,7 +10,7 @@ const Game = () => {
 				justifyContent: "center",
 				alignItems: "center",
 				position: "relative",
-				overflow: "hidden", // Hides any overflow content
+				overflow: "hidden",
 			}}
 		>
 			<iframe
@@ -19,7 +19,7 @@ const Game = () => {
 				style={{
 					position: "absolute",
 					width: "100%",
-					height: "110%", // Adjust this to crop out the navigation at the bottom
+					height: "110%",
 					top: "0",
 					left: "0",
 					border: "none",
