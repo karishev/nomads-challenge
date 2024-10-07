@@ -29,7 +29,14 @@ export const Info = ({ data, setClose }) => {
 							</li>
 						</ul>
 					</div>
-					<button className="explore-button">Explore more</button>
+					<a
+						href={data.link}
+						className={styles.button}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Explore more
+					</a>
 				</div>
 			</div>
 		</>

@@ -126,7 +126,7 @@ li {
 }
 
 
-.explore-button {
+.button {
   padding: 10px 20px;
   background-color: #1e1b41; /* Dark purple background */
   color: #ffffff; /* White text */
@@ -138,11 +138,10 @@ li {
   outline: none;
   display: inline-block;
   text-align: center;
-  text-decoration: none;
+  text-decoration: none; /* Remove underline */
   transition: background-color 0.3s ease;
-  
 }
 
-.explore-button:hover {
+.button:hover {
   background-color: #33305b; /* Slightly lighter shade on hover */
 }

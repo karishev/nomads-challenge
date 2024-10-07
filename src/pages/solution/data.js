@@ -21,6 +21,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/bangladesh-ccgap/",
+				color: "#FF5733",
 			},
 		},
 		{
@@ -44,6 +45,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/nepal-ccgap/",
+				color: "#33FF57",
 			},
 		},
 		{
@@ -67,6 +69,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/climate-change-gender-action-plan-of-the-government-and-people-of-pakistan/",
+				color: "#3357FF",
 			},
 		},
 		{
@@ -90,6 +93,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/the-art-of-implementation-gender-strategies-transforming-national-and-regional-climate-change-decision-making/",
+				color: "#FF33A5",
 			},
 		},
 		{
@@ -113,6 +117,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/cuba-ccgap/",
+				color: "#F3FF33",
 			},
 		},
 		{
@@ -136,6 +141,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/plan-de-accion-genero-y-cambio-climatico-de-republica-dominicana-pagcc-rd/",
+				color: "#33FFF5",
 			},
 		},
 		{
@@ -159,6 +165,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/ccgap-ecuador/",
+				color: "#F533FF",
 			},
 		},
 		{
@@ -182,6 +189,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/ccgap-guatemala/",
+				color: "#FFB533",
 			},
 		},
 		{
@@ -205,6 +213,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/the-art-of-implementation-gender-strategies-transforming-national-and-regional-climate-change-decision-making/",
+				color: "#B533FF",
 			},
 		},
 		{
@@ -228,6 +237,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/sonora-ccgap/",
+				color: "#33FFDA",
 			},
 		},
 		{
@@ -251,6 +261,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/the-art-of-implementation-gender-strategies-transforming-national-and-regional-climate-change-decision-making/",
+				color: "#FF5733",
 			},
 		},
 		{
@@ -274,6 +285,7 @@ const data = {
 					],
 				],
 				link: "https://genderandenvironment.org/plan-de-accion-en-genero-y-cambio-climatico-del-peru-pagcc-peru/",
+				color: "#F3FF33",
 			},
 		},
 	],
